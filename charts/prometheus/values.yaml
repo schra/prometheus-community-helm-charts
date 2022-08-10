@@ -1464,18 +1464,17 @@ serverFiles:
       - /etc/config/rules
       - /etc/config/alerts
 
+    # A scrape configuration for running Prometheus on a Kubernetes cluster.
+    # This uses separate scrape configs for cluster components (i.e. API server, node)
+    # and services to allow each to use different authentication configs.
+    #
+    # Kubernetes labels will be added as Prometheus labels on metrics via the
+    # `labelmap` relabeling action.
     scrape_configs:
       - job_name: prometheus
         static_configs:
           - targets:
             - localhost:9090
-
-      # A scrape configuration for running Prometheus on a Kubernetes cluster.
-      # This uses separate scrape configs for cluster components (i.e. API server, node)
-      # and services to allow each to use different authentication configs.
-      #
-      # Kubernetes labels will be added as Prometheus labels on metrics via the
-      # `labelmap` relabeling action.
 
       # Scrape config for API servers.
       #
